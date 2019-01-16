@@ -43,7 +43,7 @@ class Remaintenance
  
     public function init()
     {
-        add_action('init', array($this, 'check'));
+        add_action('get_header', array($this, 'check'));
 		add_filter( 'query_vars', function( $query_vars ) {
 		    $query_vars[] = 'reaccess';
 		    return $query_vars;
@@ -60,8 +60,14 @@ class Remaintenance
 			
 		$reAccess = get_query_var( 'reaccess', 0 );
 
-		if ($reAccess == $options['re_cookie_name'] ){
+		if ( $reAccess === $options['re_cookie_name'] ){
 			setcookie($options['re_cookie_name'], time(), time() + $options['re_cookie_duration'], "/"); // 86400 = 1 day
+
+            global $successMessage; 
+            $successMessage = 'Access Granted. Go to <a href="'.get_home_url().'">'.get_home_url().'</a> and have fun!';
+            
+            include( 'theme/cookie-confirm.php' ); 
+            exit;
 		}
 
 		return $reAccess;
