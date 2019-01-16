@@ -43,7 +43,7 @@ class Remaintenance
  
     public function init()
     {
-        add_action('get_header', array($this, 'check'));
+        add_action('init', array($this, 'check'));
 		add_filter( 'query_vars', function( $query_vars ) {
 		    $query_vars[] = 'reaccess';
 		    return $query_vars;
@@ -88,11 +88,16 @@ class Remaintenance
 
 		    if ( $ican < 1 )  {
 
+                global $reThemeContent; 
+                $reThemeContent = $options['re_message'];
+
 		        $period = 1 * HOUR_IN_SECONDS; // 3 hours, but you can change if you need
 
 
 		        // you can insert whatever you want :)
-		        echo $_COOKIE[$options['re_message']];
+		        //echo $_COOKIE[$options['re_message']];
+                include( 'theme/default.php' ); 
+
 		        exit;
 
 			}
