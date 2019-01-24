@@ -1,0 +1,62 @@
+@-webkit-keyframes bgAnimation {
+    0%      {background-color:#eeeeee;  border-color:#ffffff;}
+    33.0%   {background-color:#ffffff;  border-color:#eeeeee;}
+    66.0%   {background-color:#ffffff;  border-color:#eeeeee;}
+    100.0%  {background-color:#eeeeee;  border-color:#ffffff;}   
+}
+
+@keyframes bgAnimation {
+    0%      {background-color:#eeeeee;  border-color:#ffffff;}
+    33.0%   {background-color:#ffffff;  border-color:#eeeeee;}
+    66.0%   {background-color:#ffffff;  border-color:#eeeeee;}
+    100.0%  {background-color:#eeeeee;  border-color:#ffffff;}    
+}
+
+html{
+  height:100%;
+}
+
+body{
+  margin:0;
+  height:100%;
+}
+
+.re-page{
+  height:100%;
+  width:100%;
+  border:10px solid;
+  text-align:center;  
+  box-sizing:border-box;
+  margin:0;
+    animation-name: bgAnimation;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;    
+    animation-play-state: running;
+}
+
+
+.re-content{
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+  width:100%;
+  text-align:center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:20px;
+  line-height:30px;
+  letter-spacing:1px;
+  text-shadow:3px 3px 3px rgba(0,0,0,.15);
+  color:#666;
+}
+
+.re-content a{
+  display:inline-block;
+  color:#0098d4;
+  font-size:1.1em;
+  text-shadow:5px 5px 5px rgba(0,0,0,.20);
+}
+
+.re-content a:hover{
+  color:#006d99;
+}

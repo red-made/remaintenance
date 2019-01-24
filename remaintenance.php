@@ -15,14 +15,13 @@
  * @wordpress-plugin
  * Plugin Name:       ReMaintenance
  * Plugin URI:        red-made.com/remaintenance
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Close the website for maintenance except for logged Admin and for browser that have set a specific cookie.
  * Version:           1.0.0
  * Author:            red-made
  * Author URI:        red-made.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       remaintenance
- * Domain Path:       /languages
  */
 
 // If this file is called directly, abort.
@@ -32,8 +31,6 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
  */
 define( 'PLUGIN_NAME_VERSION', '1.0.0' );
 
@@ -97,11 +94,6 @@ class Remaintenance
                 global $reThemeContent; 
                 $reThemeContent = $options['re_message'];
 
-		        $period = 1 * HOUR_IN_SECONDS; // 3 hours, but you can change if you need
-
-
-		        // you can insert whatever you want :)
-		        //echo $_COOKIE[$options['re_message']];
                 include( 'theme/default.php' ); 
 
 		        exit;
@@ -172,7 +164,7 @@ class MySettingsPage
         $this->options = get_option( 're_option_name' );
         ?>
         <div class="wrap">
-            <h1>My Settings</h1>
+            <h1>Remaintenance options</h1>
             <form method="post" action="options.php">
             <?php
                 // This prints out all hidden setting fields
@@ -213,7 +205,7 @@ class MySettingsPage
 
         add_settings_field(
             're_cookie_name', // ID
-            'Cookie name', // Title 
+            'Cookie auth name', // Title 
             array( $this, 're_cookie_name_callback' ), // Callback
             're-setting-admin', // Page
             're_section' // Section 
@@ -221,7 +213,7 @@ class MySettingsPage
 
         add_settings_field(
             're_cookie_duration', 
-            'Cookie duration', 
+            'Cookie duration in seconds', 
             array( $this, 're_cookie_duration_callback' ), 
             're-setting-admin', 
             're_section'
@@ -271,7 +263,7 @@ class MySettingsPage
 
     	$maintenance = new Remaintenance();
     	$options = $maintenance->getConfig();
-        print 'Your website be accessible only for logged in user or guest with specified cookie. Click on this link (or paste in browser) to set the cookie: <a href="'.get_home_url().'/?reaccess='.$options['re_cookie_name'].'">'.get_home_url().'/?reaccess='.$options['re_cookie_name'].'</a>';
+        print 'Your website be accessible only for logged in user or guest with specified cookie. </br>Click on this link (or paste in browser) to set the cookie: <a style="color:#ff0000; font-weight:bold; font-size:1.1em;" href="'.get_home_url().'/?reaccess='.$options['re_cookie_name'].'">'.get_home_url().'/?reaccess='.$options['re_cookie_name'].'</a>';
     }
 
     /** 
@@ -317,5 +309,6 @@ class MySettingsPage
 
 }
 
-if( is_admin() )
+if( is_admin() ){
     $re_settings_page = new MySettingsPage();
+}

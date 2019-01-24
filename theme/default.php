@@ -7,11 +7,16 @@ Template Name: default
 <html lang="en"> 
 	<head> 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		<title>Title Goes Here</title> 
+		<link rel="stylesheet" type="text/css" href="<?php echo plugins_url('remaintenance/theme') ?>/assets/style.css">
+		<title>Under Re-Maintenance</title> 
 	</head>
 	<body>
-		<?php
-		echo $reThemeContent;
-		?>
+		<div class="re-page">
+			<div class="re-content">
+				<?php
+				echo $reThemeContent;
+				?>
+			</div>
+		</div>
 	</body> 
 </html>

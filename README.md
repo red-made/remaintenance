@@ -1,3 +1,3 @@
 # remaintenance
 
-Wp mainteinance plugin withi guest access using cookies
+Wp mainteinance plugin with guest access using cookies

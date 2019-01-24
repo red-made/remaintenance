@@ -7,11 +7,16 @@ Template Name: default
 <html lang="en"> 
 	<head> 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		<title>Title Goes Here</title> 
+		<link rel="stylesheet" type="text/css" href="<?php echo plugins_url('remaintenance/theme') ?>/assets/style.css">
+		<title>Access granted</title> 
 	</head>
 	<body>
-		<?php
-		echo $successMessage;
-		?>
+		<div class="re-page">
+			<div class="re-content">
+				<?php
+				echo $successMessage;
+				?>
+			</div>
+		</div>		
 	</body> 
 </html>
