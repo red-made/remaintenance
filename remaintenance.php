@@ -32,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+define( 'REMAINTENANCE_VERSION', '1.0.0' );
 
 
 class Remaintenance
