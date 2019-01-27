@@ -124,7 +124,7 @@ $maintenance->init();
 
 
 
-class MySettingsPage
+class Remaintenance_settings_page
 {
     /**
      * Holds the values to be used in the fields callbacks
@@ -310,5 +310,5 @@ class MySettingsPage
 }
 
 if( is_admin() ){
-    $re_settings_page = new MySettingsPage();
+    $re_settings_page = new Remaintenance_settings_page();
 }
